@@ -113,7 +113,6 @@
                 option.value = animation.name
                 selectAnimation.add(option);
               })
-              console.log(animations.animations)
             }
           });
 
@@ -126,6 +125,7 @@
     <style>
       * {
         box-sizing: border-box;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       }
       .controls{
         width:100%;
@@ -136,12 +136,15 @@
         display: flex;
         flex-flow: column wrap;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         gap:5px;
       }
       .data{
-        background: #fff;
-        width:100%;
+        background: rgba(255,255,255,0,6);
+        width: calc(100% - 24px);
+        line-break: anywhere;
+        padding: 12px;
+        backdrop-filter: blur(10px);
       }
       .btns{
         display: flex;
@@ -161,7 +164,7 @@
   <body>
     <a-scene stats mindar-image="imageTargetSrc: ./source/targets.mind; maxTrack: 1" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-        <a-asset-item id="cat" src="./source/sean-final-reduce-texture.glb"></a-asset-item>
+        <a-asset-item id="cat" src="./source/sean-final-full-animation.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>

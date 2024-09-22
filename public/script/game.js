@@ -123,7 +123,6 @@ AFRAME.registerComponent('grallop', {
                 rotation: `${parseFloatToFixed(this.el.object3D.rotation.x,2)} ${parseFloatToFixed(this.el.object3D.rotation.y,2)} ${parseFloatToFixed(this.el.object3D.rotation.z,2)}`,
                 position: `${parseFloatToFixed(this.el.object3D.position.x,2)} ${parseFloatToFixed(this.el.object3D.position.y,2)} ${parseFloatToFixed(this.el.object3D.position.z,2)}`,
                 scale: `${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)}`,
-                animation: this.el.getAttribute('animation-mixer')
             }
             localStorage.setItem('mindAR-image-storage', JSON.stringify(data))
         })
@@ -153,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
             bot.setAttribute("rotation", data.rotation.replaceAll(',', ' '))
             bot.setAttribute("position", data.position.replaceAll(',', ' '))
             bot.setAttribute("scale", data.scale.replaceAll(',', ' '))
-            bot.setAttribute("animation-mixer", data.animation)
         })
     }
     

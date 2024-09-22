@@ -23,19 +23,19 @@ AFRAME.registerComponent('grallop', {
     init() {
         const label =this.data;
         const initPosition = {
-            x:1,
-            y:0,
-            z:-1,
+            x:this.el.object3D.position.x,
+            y:this.el.object3D.position.y,
+            z:this.el.object3D.position.z,
         }
         const initRotation = {
-            x:30,
-            y:0,
-            z:0,
+            x:this.el.object3D.rotation.x,
+            y:this.el.object3D.rotation.y,
+            z:this.el.object3D.rotation.z,
         }
         const initScale = {
-            x:5,
-            y:5,
-            z:5,
+            x:this.el.object3D.scale.x,
+            y:this.el.object3D.scale.y, 
+            z:this.el.object3D.scale.z,
         }
         // get all elements
         const scene = document.querySelector('a-scene');

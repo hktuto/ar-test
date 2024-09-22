@@ -1,6 +1,4 @@
-function changeAnimation(animation) {
-    
-}
+
 
 function parseFloatToFixed(number, precision) {
     const factor = Math.pow(10, precision);
@@ -56,6 +54,7 @@ AFRAME.registerComponent('grallop', {
         const bigBTN = document.getElementById('bigBTN');
         const smallBTN = document.getElementById('smallBTN');
         const photo = document.getElementById('photo');
+        const saveBtn = document.getElementById('saveBtn');
 
         // const animations =  this.el.object3D.children
         // console.log(animations)
@@ -118,7 +117,16 @@ AFRAME.registerComponent('grallop', {
              this.el.object3D.scale.z -= 0.1
             displayText(label,  this.el.object3D)
         })
-        
+
+        saveBtn.addEventListener('click', () => {
+            const data = {
+                rotation: `${this.el.object3D.rotation.x},${this.el.object3D.rotation.y},${this.el.object3D.rotation.z}`,
+                position: `${this.el.object3D.position.x},${this.el.object3D.position.y},${this.el.object3D.position.z}`,
+                scale: `${this.el.object3D.scale.x},${this.el.object3D.scale.y},${this.el.object3D.scale.z}`,
+                animation: this.el.getAttribute('animation-mixer')
+            }
+            localStorage.setItem('mindAR-image-storage', JSON.stringify(data))
+        })
         
         
         // bot control
@@ -135,6 +143,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log('DOM ready');
     const scene = document.querySelector('a-scene');
     const selectAnimation = document.getElementById('selectAnimation');
+
+    const storage = localStorage.getItem('mindAR-image-storage');
+    if(storage) {
+        const data = JSON.parse(storage);
+        const bots = document.querySelectorAll('.bot');
+        bots.forEach( bot => {
+            bot.setAttribute("rotation", data.rotation)
+            bot.setAttribute("position", data.position)
+            bot.setAttribute("scale", data.scale)
+            bot.setAttribute("animation-mixer", data.animation)
+        })
+    }
     
     // // target 
     // const target = document.getElementById('target');

@@ -120,9 +120,9 @@ AFRAME.registerComponent('grallop', {
 
         saveBtn.addEventListener('click', () => {
             const data = {
-                rotation: `${this.el.object3D.rotation.x},${this.el.object3D.rotation.y},${this.el.object3D.rotation.z}`,
-                position: `${this.el.object3D.position.x},${this.el.object3D.position.y},${this.el.object3D.position.z}`,
-                scale: `${this.el.object3D.scale.x},${this.el.object3D.scale.y},${this.el.object3D.scale.z}`,
+                rotation: `${parseFloatToFixed(this.el.object3D.rotation.x,2)} ${parseFloatToFixed(this.el.object3D.rotation.y,2)} ${parseFloatToFixed(this.el.object3D.rotation.z,2)}`,
+                position: `${parseFloatToFixed(this.el.object3D.position.x,2)} ${parseFloatToFixed(this.el.object3D.position.y,2)} ${parseFloatToFixed(this.el.object3D.position.z,2)}`,
+                scale: `${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)}`,
                 animation: this.el.getAttribute('animation-mixer')
             }
             localStorage.setItem('mindAR-image-storage', JSON.stringify(data))
@@ -147,11 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const storage = localStorage.getItem('mindAR-image-storage');
     if(storage) {
         const data = JSON.parse(storage);
+        console.log(data)
         const bots = document.querySelectorAll('.bot');
         bots.forEach( bot => {
-            bot.setAttribute("rotation", data.rotation)
-            bot.setAttribute("position", data.position)
-            bot.setAttribute("scale", data.scale)
+            bot.setAttribute("rotation", data.rotation.replace(',', ' '))
+            bot.setAttribute("position", data.position.replace(',', ' '))
+            bot.setAttribute("scale", data.scale.replace(',', ' '))
             bot.setAttribute("animation-mixer", data.animation)
         })
     }

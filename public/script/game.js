@@ -150,9 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(data)
         const bots = document.querySelectorAll('.bot');
         bots.forEach( bot => {
-            bot.setAttribute("rotation", data.rotation.replace(',', ' '))
-            bot.setAttribute("position", data.position.replace(',', ' '))
-            bot.setAttribute("scale", data.scale.replace(',', ' '))
+            bot.setAttribute("rotation", data.rotation.replaceAll(',', ' '))
+            bot.setAttribute("position", data.position.replaceAll(',', ' '))
+            bot.setAttribute("scale", data.scale.replaceAll(',', ' '))
             bot.setAttribute("animation-mixer", data.animation)
         })
     }

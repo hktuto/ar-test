@@ -17,12 +17,10 @@
 }
   .controls{
     width: calc(100svw - 24px);
-    max-width: 800px;
-    margin: 0 auto;
     position: absolute;
     z-index: 99;
-    bottom: 10px;
-    left:10px;
+    bottom: 24px;
+    left:12px;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;

@@ -48,7 +48,7 @@ AFRAME.registerComponent('grallop', {
         const Idle_4 = document.getElementById('Idle_4');
         const Idle_6 = document.getElementById('Idle_6');
         const Lick = document.getElementById('Lick');
-        const Sit_loop_4 = document.getElementById('Sit_loop_4');
+        const Sit_loop_3 = document.getElementById('Sit_loop_3');
 
         Idle_4.addEventListener('click', () => {
             const newAttr = `clip: Idle_4; crossFadeDuration: .3;`
@@ -62,8 +62,8 @@ AFRAME.registerComponent('grallop', {
             const newAttr = `clip: Lick; crossFadeDuration: .3;`
             this.el.setAttribute("animation-mixer", newAttr)
         })
-        Sit_loop_4.addEventListener('click', () => {
-            const newAttr = `clip: Sit_loop_4; crossFadeDuration: .3;`
+        Sit_loop_3.addEventListener('click', () => {
+            const newAttr = `clip: Sit_loop_3; crossFadeDuration: .3;`
             this.el.setAttribute("animation-mixer", newAttr)
         })
 

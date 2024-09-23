@@ -6,15 +6,15 @@ function parseFloatToFixed(number, precision) {
 }
 
 function displayText(label, object3D) {
-    const indexLabel = document.getElementById('indexLabel')
-    const position = document.getElementById('positionText')
-    const rotate = document.getElementById('rotateText')
-    const scaleText = document.getElementById('scaleText');
+    // const indexLabel = document.getElementById('indexLabel')
+    // const position = document.getElementById('positionText')
+    // const rotate = document.getElementById('rotateText')
+    // const scaleText = document.getElementById('scaleText');
 
-    indexLabel.innerText = label;
-    position.innerText = parseFloatToFixed(object3D.position.x, 2) + ',' + parseFloatToFixed(object3D.position.y, 2) + ',' + parseFloatToFixed(object3D.position.z, 2);
-    rotate.innerText = parseFloatToFixed(object3D.rotation.x, 2) + ',' + parseFloatToFixed(object3D.rotation.y, 2) + ',' + parseFloatToFixed(object3D.rotation.z, 2);
-    scaleText.innerText = parseFloatToFixed(object3D.scale.x, 2) + ',' + parseFloatToFixed(object3D.scale.y, 2) + ',' + parseFloatToFixed(object3D.scale.z, 2);
+    // indexLabel.innerText = label;
+    // position.innerText = parseFloatToFixed(object3D.position.x, 2) + ',' + parseFloatToFixed(object3D.position.y, 2) + ',' + parseFloatToFixed(object3D.position.z, 2);
+    // rotate.innerText = parseFloatToFixed(object3D.rotation.x, 2) + ',' + parseFloatToFixed(object3D.rotation.y, 2) + ',' + parseFloatToFixed(object3D.rotation.z, 2);
+    // scaleText.innerText = parseFloatToFixed(object3D.scale.x, 2) + ',' + parseFloatToFixed(object3D.scale.y, 2) + ',' + parseFloatToFixed(object3D.scale.z, 2);
     
 
 }
@@ -146,12 +146,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const storage = localStorage.getItem('mindAR-image-storage');
     if(storage) {
         const data = JSON.parse(storage);
-        console.log(data)
+        
         const bots = document.querySelectorAll('.bot');
         bots.forEach( bot => {
             bot.setAttribute("rotation", data.rotation.replaceAll(',', ' '))
             bot.setAttribute("position", data.position.replaceAll(',', ' '))
             bot.setAttribute("scale", data.scale.replaceAll(',', ' '))
+        })
+    }else{
+        bots.forEach( bot => {
+            bot.setAttribute("rotation", "0.22 0 2")
+            bot.setAttribute("position", "0.5 -0.4 -0.2")
+            bot.setAttribute("scale", "2.7 2.7 2.7 ") 
         })
     }
     

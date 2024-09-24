@@ -33,21 +33,28 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    gap:12px;
+    gap:0px;
+  }
+  .sizeContainer{
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap:6px;
   }
   .row{
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
-    gap:48px;
+    gap:12px;
   }
   .direction{
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    gap:12px;
+    gap:0px;
   }
   .data{
     /* background: rgba(255,255,255,0.6); */

@@ -17,7 +17,7 @@
 
       <a-entity id="displayTarget" >
 
-        <a-gltf-model id="catEntry" class="bot"  src="#cat" rotation="30 0 0 " position="1 0 -1" scale="5 5 5"  animation-mixer="clip: Idle_1; crossFadeDuration: .3;" grallop="0" >
+        <a-gltf-model id="catEntry" class="bot"  src="#cat" rotation="0.5 -0.4 -0.2" position="0.22 0 2" scale="2.7 2.7 2.7 2.7"  animation-mixer="clip: Idle_1; crossFadeDuration: .3;" grallop="0" >
         </a-gltf-model>
             <!-- animation-mixer="clip: Drinking; crossFadeDuration: .3;" -->
       </a-entity>
@@ -32,7 +32,7 @@
       <a-entity  class="target" mindar-image-target="targetIndex: 4" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
       <a-entity  class="target" mindar-image-target="targetIndex: 5" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
       <a-entity  class="target" mindar-image-target="targetIndex: 6" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex:76" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 7" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
       
     </a-scene>
 
@@ -94,7 +94,17 @@
             </div>
             <div id="downBTN" class="btn" ><img src="./source/arrow.svg" style="transform: rotate(90deg);"/></div>
           </div>
+          
           <div class="direction">
+            <div class="sizeContainer">
+
+              <div id="bigBTN" class="btn">
+                <img src="./source/001-magnifying-glass-1.svg" />
+              </div>
+              <div id="smallBTN" class="btn">
+                <img src="./source/002-magnifying-glass.svg" />
+              </div>
+            </div>
             <!-- <div id="rotateUpBTN" class="btn">Rotate Up</div>
             <div class="row">
               

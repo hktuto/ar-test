@@ -72,6 +72,7 @@ AFRAME.registerComponent('grallop', {
         if(upBTN) {
             upBTN.addEventListener('click', () => {
                 this.el.object3D.position.y += 0.1
+                save()
             })
         }
         if(downBTN) {
@@ -82,24 +83,28 @@ AFRAME.registerComponent('grallop', {
         if(leftBTN) {
             leftBTN.addEventListener('click', () => {
                 this.el.object3D.position.x -= 0.1
+                save()
                 
             })
         }
         if(rightBTN) {
             rightBTN.addEventListener('click', () => {
                 this.el.object3D.position.x += 0.1
+                save()
                 
             })
         }
         if(frontBTN) {
             frontBTN.addEventListener('click', () => {
                 this.el.object3D.position.z -= 0.1
+                save()
             })
         }
         if(backBTN) {
 
             backBTN.addEventListener('click', () => {
                 this.el.object3D.position.z += 0.1
+                save()
                 
             })
         }
@@ -112,18 +117,21 @@ AFRAME.registerComponent('grallop', {
         if(rotateRightBTN) {
             rotateRightBTN.addEventListener('click', () => {
                 this.el.object3D.rotation.y += 0.1
+                save()
                 
             })
         }
         if(rotateDownBTN) {
             rotateDownBTN.addEventListener('click', () => {
                 this.el.object3D.rotation.x += 0.1
+                save()
                 
             })
         }
         if(rotateUpBTN) {
             rotateUpBTN.addEventListener('click', () => {
                 this.el.object3D.rotation.x -= 0.1
+                save()
             })
         }
         if(bigBTN) {
@@ -131,6 +139,7 @@ AFRAME.registerComponent('grallop', {
                 this.el.object3D.scale.x += 0.1
                 this.el.object3D.scale.y += 0.1
                 this.el.object3D.scale.z += 0.1
+                save()
             })
         }
         if(smallBTN) {
@@ -138,6 +147,7 @@ AFRAME.registerComponent('grallop', {
                 this.el.object3D.scale.x -= 0.1
                 this.el.object3D.scale.y -= 0.1
                 this.el.object3D.scale.z -= 0.1
+                save()
             })
         }
         if(saveBtn) {
@@ -150,6 +160,15 @@ AFRAME.registerComponent('grallop', {
                 }
                 localStorage.setItem('mindAR-image-storage', JSON.stringify(data))
             })
+        }
+
+        function save(){
+            const data = {
+                rotation: `${parseFloatToFixed(this.el.object3D.rotation.x,2)} ${parseFloatToFixed(this.el.object3D.rotation.y,2)} ${parseFloatToFixed(this.el.object3D.rotation.z,2)}`,
+                position: `${parseFloatToFixed(this.el.object3D.position.x,2)} ${parseFloatToFixed(this.el.object3D.position.y,2)} ${parseFloatToFixed(this.el.object3D.position.z,2)}`,
+                scale: `${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)}`,
+            }
+            localStorage.setItem('mindAR-image-storage', JSON.stringify(data))
         }
         
         
@@ -166,12 +185,12 @@ AFRAME.registerComponent('grallop', {
 document.addEventListener('DOMContentLoaded', () => {
     // console.log('DOM ready');
     const scene = document.querySelector('a-scene');
-
+    const bots = document.querySelectorAll('.bot');
     const storage = localStorage.getItem('mindAR-image-storage');
     if(storage) {
         const data = JSON.parse(storage);
         
-        const bots = document.querySelectorAll('.bot');
+        
         bots.forEach( bot => {
             bot.setAttribute("rotation", data.rotation.replaceAll(',', ' '))
             bot.setAttribute("position", data.position.replaceAll(',', ' '))
@@ -179,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }else{
         bots.forEach( bot => {
-            bot.setAttribute("rotation", "0.22 0 2")
-            bot.setAttribute("position", "0.5 -0.4 -0.2")
+            bot.setAttribute("rotation", "0 0 0")
+            bot.setAttribute("position", "0 0 0")
             bot.setAttribute("scale", "2.7 2.7 2.7 2.7") 
         })
     }
@@ -208,15 +227,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     scene.addEventListener("arReady", (event) => {
         displayTarget.object3D.matrixAutoUpdate = false;
-        const animations =  bot.object3D.children[0]
-        if(animations && animations.animations) {
-            animations.animations.forEach( animation => {
-                const option = document.createElement('option')
-                option.text = animation.name;
-                option.value = animation.name
-                selectAnimation.add(option);
-            })
-        }
+        // const animations =  bot.object3D.children[0]
+        // if(animations && animations.animations) {
+        //     animations.animations.forEach( animation => {
+        //         const option = document.createElement('option')
+        //         option.text = animation.name;
+        //         option.value = animation.name
+        //         selectAnimation.add(option);
+        //     })
+        // }
     });
 
     // selectAnimation.addEventListener('change', (ev) => {

@@ -183,15 +183,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     scene.addEventListener("arReady", (event) => {
         displayTarget.object3D.matrixAutoUpdate = false;
-        const animations =  bot.object3D.children[0]
-        if(animations && animations.animations) {
-            animations.animations.forEach( animation => {
-                const option = document.createElement('option')
-                option.text = animation.name;
-                option.value = animation.name
-                selectAnimation.add(option);
-            })
-        }
+        // const animations =  bot.object3D.children[0]
+        // if(animations && animations.animations) {
+        //     animations.animations.forEach( animation => {
+        //         const option = document.createElement('option')
+        //         option.text = animation.name;
+        //         option.value = animation.name
+        //         selectAnimation.add(option);
+        //     })
+        // }
     });
 
     selectAnimation.addEventListener('change', (ev) => {

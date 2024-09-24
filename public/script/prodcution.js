@@ -186,31 +186,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // // target 
-    // const target = document.getElementById('target');
-    //
-    // target.addEventListener("targetFound", event => {
-    //     console.log("target found", event);
-    //     // arSystem.pause()
-    //
-    // });
-    // target.addEventListener("targetLost", event => {
-    //     console.log("target Lost");
-    //
-    // });
+    const targets = document.querySelectorAll('.target');
+    const displayTarget = document.getElementById('displayTarget');
+    targets.forEach( target => {
+        target.addEventListener("targetFound", event => {
+            console.log("target found", event.target);
+            setTimeout(() => {
+                displayTarget.object3D.matrix =  event.target.object3D.matrix;
+                // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+                // event.target.object3D.visible = false;
+            }, 200)
+            // arSystem.pause()
+            // displayTarget.object3D
+        });
+        target.addEventListener("targetLost", event => {
+            console.log("target Lost");
+            displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+        });
+    })
     const bot = document.getElementById('catEntry');
     
-    // scene.addEventListener("arReady", (event) => {
-    //     console.log("MindAR is ready", bot)
-    //     const animations =  bot.object3D.children[0]
-    //     if(animations && animations.animations) {
-    //         animations.animations.forEach( animation => {
-    //             const option = document.createElement('option')
-    //             option.text = animation.name;
-    //             option.value = animation.name
-    //             selectAnimation.add(option);
-    //         })
-    //     }
-    // });
+    scene.addEventListener("arReady", (event) => {
+        displayTarget.object3D.matrixAutoUpdate = false;
+        const animations =  bot.object3D.children[0]
+        if(animations && animations.animations) {
+            animations.animations.forEach( animation => {
+                const option = document.createElement('option')
+                option.text = animation.name;
+                option.value = animation.name
+                selectAnimation.add(option);
+            })
+        }
+    });
 
     // selectAnimation.addEventListener('change', (ev) => {
     //     // get all class bots

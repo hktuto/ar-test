@@ -162,21 +162,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // // target 
-    // const target = document.getElementById('target');
-    //
-    // target.addEventListener("targetFound", event => {
-    //     console.log("target found", event);
-    //     // arSystem.pause()
-    //
-    // });
-    // target.addEventListener("targetLost", event => {
-    //     console.log("target Lost");
-    //
-    // });
+    const target = document.getElementById('target');
+    const displayTarget = document.getElementById('displayTarget');
+    
+    target.addEventListener("targetFound", event => {
+        console.log("target found", event.target);
+        setTimeout(() => {
+            displayTarget.object3D.matrix =  event.target.object3D.matrix;
+            // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+            // event.target.object3D.visible = false;
+        }, 200)
+        // arSystem.pause()
+        // displayTarget.object3D
+    });
+    target.addEventListener("targetLost", event => {
+        console.log("target Lost");
+        displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+    });
     const bot = document.getElementById('catEntry');
     
     scene.addEventListener("arReady", (event) => {
-        console.log("MindAR is ready", bot)
+        displayTarget.object3D.matrixAutoUpdate = false;
         const animations =  bot.object3D.children[0]
         if(animations && animations.animations) {
             animations.animations.forEach( animation => {

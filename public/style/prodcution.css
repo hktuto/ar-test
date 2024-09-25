@@ -125,3 +125,13 @@
     background: #fff;
     border-radius: 10px;
   }
+
+  .emptyContainer{
+    z-index: 3;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+  }

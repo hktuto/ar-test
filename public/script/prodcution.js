@@ -246,5 +246,20 @@ document.addEventListener('DOMContentLoaded', () => {
     //         bot.setAttribute("animation-mixer", newAttr)
     //     })
     // })
+
+    const emptyContainer = document.querySelector('.emptyContainer');
+    // toggle show hide otherControl and top if emptyContainer is clicked
+    emptyContainer.addEventListener('click', () => {
+        const top = document.querySelector('.top');
+        const otherControl = document.querySelector('.controls');
+        if(otherControl.style.display === 'block') {
+            top.style.display = 'none';
+            otherControl.style.display = 'none';
+        }else{
+            top.style.display = 'block';
+            otherControl.style.display = 'block';
+        }
+    })
+    
     
 });

@@ -1,6 +1,6 @@
 <html></html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=0" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
@@ -17,7 +17,7 @@
 
       <a-entity id="displayTarget" >
 
-        <a-gltf-model id="catEntry" class="bot"  src="#cat" rotation="0.5 -0.4 -0.2" position="0.22 0 2" scale="2.7 2.7 2.7 2.7"  animation-mixer="clip: Idle_1; crossFadeDuration: .3;" grallop="0" >
+        <a-gltf-model id="catEntry" class="bot"  src="#cat" rotation="0 0 0" position="1 0 0" scale="2.7 2.7 2.7 2.7"  animation-mixer="clip: Idle_1; crossFadeDuration: .3;" grallop="0" >
         </a-gltf-model>
             <!-- animation-mixer="clip: Drinking; crossFadeDuration: .3;" -->
       </a-entity>
@@ -33,7 +33,20 @@
       <a-entity  class="target" mindar-image-target="targetIndex: 5" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
       <a-entity  class="target" mindar-image-target="targetIndex: 6" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
       <a-entity  class="target" mindar-image-target="targetIndex: 7" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      
+      <a-entity  class="target" mindar-image-target="targetIndex: 8" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 9" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 10" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 11" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 12" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 13" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 14" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 15" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 16" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 17" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 18" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 19" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+
+
     </a-scene>
 
     <div class="top">
@@ -51,6 +64,9 @@
           <img src="./source/Sit loop 4.png" />
         </div>
       </div>
+      </div>
+      <div class="emptyContainer">
+
       </div>
       <!-- <div class="data">
         <div class="item">
@@ -76,7 +92,17 @@
       
       <div class="btns">
         <div class="directionRow">
-          
+          <div class="direction">
+            <div class="sizeContainer">
+
+              <div id="rotateUpBTN" class="btn">
+                <img src="./source/rotate-arrow.svg" style="transform: rotate(-90deg);"/>
+              </div>
+              <div id="rotateDownBTN" class="btn">
+                <img src="./source/rotate-arrow.svg" style="transform: rotate(90deg);"/>
+              </div>
+            </div>
+          </div>
           <div class="direction">
             <div id="upBTN" class="btn">
               <img src="./source/arrow.svg" style="transform: rotate(-90deg);" />

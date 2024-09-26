@@ -1,4 +1,5 @@
 
+var showingCat = false;
 
 function parseFloatToFixed(number, precision) {
     const factor = Math.pow(10, precision);
@@ -209,9 +210,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayTarget = document.getElementById('displayTarget');
     targets.forEach( target => {
         target.addEventListener("targetFound", event => {
-            console.log("target found", event.target);
+            if(showingCat) return;
+            showingCat = true;
             setTimeout(() => {
                 displayTarget.object3D.matrix =  event.target.object3D.matrix;
+                setTimeout(() => {
+                    displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+                    displayTarget.setAttribute("rotation", "0 0 0")
+                    displayTarget.setAttribute("position", "0 0 0")
+                    displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7") 
+                    showingCat = false;
+                },1800000)
                 // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
                 // event.target.object3D.visible = false;
             }, 200)
@@ -219,8 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // displayTarget.object3D
         });
         target.addEventListener("targetLost", event => {
-            console.log("target Lost");
-            displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+            // console.log("target Lost");
+            // displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
         });
     })
     const bot = document.getElementById('catEntry');
@@ -250,6 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const emptyContainer = document.querySelector('.emptyContainer');
     // toggle show hide otherControl and top if emptyContainer is clicked
     emptyContainer.addEventListener('click', () => {
+        if(showingCat) {
+            top.style.display = 'block';
+            otherControl.style.display = 'block';
+            return;
+        }
         const top = document.querySelector('.top');
         const otherControl = document.querySelector('.controls');
         if(otherControl.style.display === 'block') {

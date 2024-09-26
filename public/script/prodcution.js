@@ -212,13 +212,19 @@ document.addEventListener('DOMContentLoaded', () => {
         target.addEventListener("targetFound", event => {
             if(showingCat) return;
             showingCat = true;
+            scene.setAttribute("mindar-image", "imageTargetSrc: ./models/targets.mind; maxTrack: 1; uiError:no; uiLoading:no; uiScanning:no;");
             setTimeout(() => {
                 displayTarget.object3D.matrix =  event.target.object3D.matrix;
+                displayTarget.setAttribute("rotation", "0 0 0")
+                    displayTarget.setAttribute("position", "0 0 0")
+                    displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7") 
                 setTimeout(() => {
                     displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
                     displayTarget.setAttribute("rotation", "0 0 0")
                     displayTarget.setAttribute("position", "0 0 0")
                     displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7") 
+                     scene.setAttribute("mindar-image", "imageTargetSrc: ./models/targets.mind; maxTrack: 1;");
+
                     showingCat = false;
                 },1800000)
                 // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
@@ -259,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emptyContainer = document.querySelector('.emptyContainer');
     // toggle show hide otherControl and top if emptyContainer is clicked
     emptyContainer.addEventListener('click', () => {
-        if(showingCat) {
+        if(!showingCat) {
             top.style.display = 'block';
             otherControl.style.display = 'block';
             return;

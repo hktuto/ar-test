@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7") 
                      
                     showingCat = false;
-                },30000)
+                },1800000)
                 // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
                 // event.target.object3D.visible = false;
             }, 200)

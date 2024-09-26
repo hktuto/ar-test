@@ -212,21 +212,31 @@ document.addEventListener('DOMContentLoaded', () => {
         target.addEventListener("targetFound", event => {
             if(showingCat) return;
             showingCat = true;
-            scene.setAttribute("mindar-image", "imageTargetSrc: ./models/targets.mind; maxTrack: 1; uiError:no; uiLoading:no; uiScanning:no;");
+            const style = document.createElement('style');
+            style.innerHTML = `
+            .mindar-ui-scanning{
+                display: none!important;
+            }
+            `
+            style.id = 'mindar-ui-scanning-style';
+            document.head.appendChild(style);
             setTimeout(() => {
                 displayTarget.object3D.matrix =  event.target.object3D.matrix;
                 displayTarget.setAttribute("rotation", "0 0 0")
-                    displayTarget.setAttribute("position", "0 0 0")
-                    displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7") 
+                displayTarget.setAttribute("position", "0 0 0")
+                displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7")
+
                 setTimeout(() => {
+                    // remove mindar-ui-scanning-style
+                    const style = document.getElementById('mindar-ui-scanning-style');
+                    style.remove();
                     displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
                     displayTarget.setAttribute("rotation", "0 0 0")
                     displayTarget.setAttribute("position", "0 0 0")
                     displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7") 
-                     scene.setAttribute("mindar-image", "imageTargetSrc: ./models/targets.mind; maxTrack: 1;");
-
+                     
                     showingCat = false;
-                },1800000)
+                },30000)
                 // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
                 // event.target.object3D.visible = false;
             }, 200)

@@ -220,20 +220,21 @@ document.addEventListener('DOMContentLoaded', () => {
             `
             style.id = 'mindar-ui-scanning-style';
             document.head.appendChild(style);
+            console.log('show cat', displayTarget.children[0].object3D)
             setTimeout(() => {
                 displayTarget.object3D.matrix =  event.target.object3D.matrix;
-                displayTarget.setAttribute("rotation", "0 0 0")
-                displayTarget.setAttribute("position", "0 0 0")
-                displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7")
+                displayTarget.children[0].setAttribute("rotation", "0 0 0")
+                displayTarget.children[0].setAttribute("position", "0 0 0")
+                displayTarget.children[0].setAttribute("scale", "2.7 2.7 2.7 2.7")
 
                 setTimeout(() => {
                     // remove mindar-ui-scanning-style
                     const style = document.getElementById('mindar-ui-scanning-style');
                     style.remove();
                     displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
-                    displayTarget.setAttribute("rotation", "0 0 0")
-                    displayTarget.setAttribute("position", "0 0 0")
-                    displayTarget.setAttribute("scale", "2.7 2.7 2.7 2.7") 
+                    displayTarget.children[0].setAttribute("rotation", "0 0 0")
+                    displayTarget.children[0].setAttribute("position", "0 0 0")
+                    displayTarget.children[0].setAttribute("scale", "2.7 2.7 2.7 2.7") 
                      
                     showingCat = false;
                 },1800000)

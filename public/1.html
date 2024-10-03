@@ -1,0 +1,160 @@
+<html></html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=0" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="./script/prodcution.js"></script>
+    <link rel="stylesheet" href="./style/prodcution.css">
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: ./models/targets.mind; maxTrack: 1; missTolerance: 1;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" >
+      <a-assets>
+        <a-asset-item id="cat" src="./models/cat.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity id="displayTarget" >
+
+        <a-gltf-model id="catEntry" class="bot"  src="#cat" rotation="0 0 0" position="0 0 0" scale="2.7 2.7 2.7 2.7"  animation-mixer="clip: Idle_1; crossFadeDuration: .3;" grallop="0" >
+        </a-gltf-model>
+            <!-- animation-mixer="clip: Drinking; crossFadeDuration: .3;" -->
+      </a-entity>
+
+      <a-entity id="target" mindar-image-target="targetIndex: 0" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 0" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 1" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 2" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 3" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 4" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 5" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 6" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 7" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 8" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 9" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 10" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 11" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 12" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 13" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 14" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 15" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 16" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 17" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 18" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 19" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+
+      <a-entity  class="target" mindar-image-target="targetIndex: 20" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 21" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 22" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 23" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 24" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 25" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 26" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 27" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 28" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 29" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+
+
+    </a-scene>
+
+    <div class="top">
+      <div class="data">
+        <div class="imgContainer" id="Idle_4">
+          <img src="./source/Idle-4.png" />
+        </div>
+        <div class="imgContainer" id="Idle_6">
+          <img src="./source/Idle 6.png" />
+        </div>
+        <div class="imgContainer" id="Lick">
+          <img src="./source/Lick.png" />
+        </div>
+        <div class="imgContainer" id="Sit_loop_3">
+          <img src="./source/Sit loop 4.png" />
+        </div>
+      </div>
+      </div>
+      <div class="emptyContainer">
+
+      </div>
+      <!-- <div class="data">
+        <div class="item">
+          item : 
+          <div id="indexLabel"></div>
+        </div>
+        <div class="item">
+          Position :
+          <div id="positionText">{x:1, y:0 z:-1} </div>
+        </div>
+        <div class="item">
+          Rotation :
+          <div id="rotateText"> {x:30, y:0 z:0} </div>
+        </div>
+        <div class="item">
+          Size :
+          <div id="scaleText"> {x:30, y:0 z:0} </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="otherControl controls">
+      
+      <div class="directionRow">
+        
+          <div class="direction">
+            <div id="rotateUpBTN" class="btn">
+              <img src="./source/rotate-arrow.svg" style="transform: rotate(-90deg);"/>
+            </div>
+            <div class="row">
+              <div id="rotateLeftBTN" class="btn">
+                <img src="./source/rotate-arrow.svg"/>
+              </div>
+              <div id="rotateRightBTN" class="btn">
+                <img src="./source/rotate-arrow.svg" style="transform: rotate(180deg);"/>
+              </div>
+            </div>
+            <div id="rotateDownBTN" class="btn">
+              <img src="./source/rotate-arrow.svg" style="transform: rotate(90deg);"/>
+            </div>
+          </div>
+          <div class="direction">
+            <div id="upBTN" class="btn">
+              <img src="./source/arrow.svg" style="transform: rotate(-90deg);" />
+            </div>
+            <div class="row">
+             
+              <div id="leftBTN" class="btn"><img src="./source/arrow.svg" style="transform: rotate(180deg);"/></div>
+              <div id="rightBTN" class="btn"><img src="./source/arrow.svg" /></div>
+
+              
+            </div>
+            <div id="downBTN" class="btn" ><img src="./source/arrow.svg" style="transform: rotate(90deg);"/></div>
+          </div>
+          
+          <div class="direction">
+            <div class="sizeContainer">
+
+              <div id="bigBTN" class="btn">
+                <img src="./source/001-magnifying-glass-1.svg" />
+              </div>
+              <div id="smallBTN" class="btn">
+                <img src="./source/002-magnifying-glass.svg" />
+              </div>
+            </div>
+            <!-- <div id="rotateUpBTN" class="btn">Rotate Up</div>
+            <div class="row">
+              
+              <div id="rotateRightBTN" class="btn">Rotate right</div>
+            </div>
+            <div id="rotateDownBTN" class="btn">Rotate Down</div>
+            
+          </div> -->
+          </div>
+        <!-- <div id="backBTN" class="btn">Back</div>
+        <div id="frontBTN" class="btn">Front</div>
+        <div id="bigBTN" class="btn">Bigger</div>
+        <div id="smallBTN" class="btn">Smaller</div>
+        <div id="saveBtn" class="btn">Save</div> -->
+        
+    </div>
+  </body>
+</html>

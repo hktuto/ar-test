@@ -6,7 +6,9 @@ function parseFloatToFixed(number, precision) {
     return Math.round(number * factor) / factor;
 }
 
-
+let scanObj;
+let refreshInterval;
+let lastMatrix;
 AFRAME.registerComponent('grallop', {
     schema: {default: ''},
     init() {
@@ -164,12 +166,12 @@ AFRAME.registerComponent('grallop', {
         }
 
         function save(){
-            const data = {
-                rotation: `${parseFloatToFixed(this.el.object3D.rotation.x,2)} ${parseFloatToFixed(this.el.object3D.rotation.y,2)} ${parseFloatToFixed(this.el.object3D.rotation.z,2)}`,
-                position: `${parseFloatToFixed(this.el.object3D.position.x,2)} ${parseFloatToFixed(this.el.object3D.position.y,2)} ${parseFloatToFixed(this.el.object3D.position.z,2)}`,
-                scale: `${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)}`,
-            }
-            localStorage.setItem('mindAR-image-storage', JSON.stringify(data))
+            // const data = {
+            //     rotation: `${parseFloatToFixed(this.el.object3D.rotation.x,2)} ${parseFloatToFixed(this.el.object3D.rotation.y,2)} ${parseFloatToFixed(this.el.object3D.rotation.z,2)}`,
+            //     position: `${parseFloatToFixed(this.el.object3D.position.x,2)} ${parseFloatToFixed(this.el.object3D.position.y,2)} ${parseFloatToFixed(this.el.object3D.position.z,2)}`,
+            //     scale: `${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)} ${parseFloatToFixed(this.el.object3D.scale.x,2)}`,
+            // }
+            // localStorage.setItem('mindAR-image-storage', JSON.stringify(data))
         }
         
         
@@ -210,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayTarget = document.getElementById('displayTarget');
     targets.forEach( target => {
         target.addEventListener("targetFound", event => {
+            console.log("targetFound")
             if(showingCat) return;
             showingCat = true;
             const style = document.createElement('style');
@@ -220,31 +223,79 @@ document.addEventListener('DOMContentLoaded', () => {
             `
             style.id = 'mindar-ui-scanning-style';
             document.head.appendChild(style);
-            console.log('show cat', displayTarget.children[0].object3D)
-            setTimeout(() => {
-                displayTarget.object3D.matrix =  event.target.object3D.matrix;
-                displayTarget.children[0].setAttribute("rotation", "0 0 0")
-                displayTarget.children[0].setAttribute("position", "0 0 0")
-                displayTarget.children[0].setAttribute("scale", "2.7 2.7 2.7 2.7")
-
+            if(scanObj) {
+                // clearInterval(refreshInterval);
                 setTimeout(() => {
-                    // remove mindar-ui-scanning-style
-                    const style = document.getElementById('mindar-ui-scanning-style');
-                    style.remove();
-                    displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
-                    displayTarget.children[0].setAttribute("rotation", "0 0 0")
-                    displayTarget.children[0].setAttribute("position", "0 0 0")
-                    displayTarget.children[0].setAttribute("scale", "2.7 2.7 2.7 2.7") 
+                    displayTarget.object3D.matrix =  event.target.object3D.matrix;  
+                }, 100)
+            }else{
+                scanObj = event.target;
+                setTimeout(() => {
+                    displayTarget.object3D.matrix =  event.target.object3D.matrix;  
+                }, 100)
+            }
+            if(refreshInterval){
+                clearInterval(refreshInterval);
+            }
+
+            refreshInterval = setInterval(() => {
+                // store last matrix
+                // compare with current matrix, if too much change, then reset
+                const currentMatrix = scanObj.object3D.matrix;
+                if(lastMatrix) {
+                    const diff = currentMatrix.elements.map((element, index) => {
+                        return Math.abs(element - lastMatrix.elements[index]);
+                    })
+                    const differentAmount = diff.reduce((a, b) => a + b, 0);
+                    console.log(differentAmount)
+                    if(differentAmount > 0.01) {
+                        lastMatrix = currentMatrix;
+                        return;
+                    }
+                }
+                lastMatrix = currentMatrix;
+
+                // displayTarget.object3D.matrix =  scanObj.object3D.matrix;  
+            }, 100)
+            
+            
+            
+            // setTimeout(() => {
+            //     displayTarget.object3D.matrix =  event.target.object3D.matrix;
+
+            //     setTimeout(() => {
+            //         // remove mindar-ui-scanning-style
+            //         const style = document.getElementById('mindar-ui-scanning-style');
+            //         style.remove();
+            //         displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+            //         displayTarget.children[0].setAttribute("rotation", "0 0 0")
+            //         displayTarget.children[0].setAttribute("position", "0 0 0")
+            //         displayTarget.children[0].setAttribute("scale", "2.7 2.7 2.7 2.7") 
                      
-                    showingCat = false;
-                },1800000)
-                // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
-                // event.target.object3D.visible = false;
-            }, 200)
+            //         showingCat = false;
+            //     },3000)
+            //     // event.target.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+            //     // event.target.object3D.visible = false;
+            // }, 200)
             // arSystem.pause()
             // displayTarget.object3D
         });
         target.addEventListener("targetLost", event => {
+            console.log("targetLost")
+            scanObj = null;
+            clearInterval(refreshInterval);
+            setTimeout(() => {
+                        // remove mindar-ui-scanning-style
+                const style = document.getElementById('mindar-ui-scanning-style');
+                style.remove();
+                displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
+                displayTarget.children[0].setAttribute("rotation", "0 0 0")
+                displayTarget.children[0].setAttribute("position", "0 0 0")
+                displayTarget.children[0].setAttribute("scale", "2.7 2.7 2.7 2.7") 
+                    
+                showingCat = false;
+                clearInterval(refreshInterval);
+            },3000)
             // console.log("target Lost");
             // displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
         });

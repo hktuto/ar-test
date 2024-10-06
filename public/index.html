@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style/prodcution.css">
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./models/targets.mind; maxTrack: 1" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" >
+    <a-scene mindar-image="imageTargetSrc: ./models/targets.mind; maxTrack: 1; missTolerance: 1;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" >
       <a-assets>
         <a-asset-item id="cat" src="./models/cat.glb"></a-asset-item>
       </a-assets>
@@ -22,40 +22,38 @@
             <!-- animation-mixer="clip: Drinking; crossFadeDuration: .3;" -->
       </a-entity>
 
-      <a-entity id="target" mindar-image-target="targetIndex: 0" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  >
+      <a-entity id="target" mindar-image-target="targetIndex: 0" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 0" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 1" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 2" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 3" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 4" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 5" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 6" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 7" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 8" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 9" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 10" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 11" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 12" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 13" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 14" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 15" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 16" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 17" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 18" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 19" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
 
-      </a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 0" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 1" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 2" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 3" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 4" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 5" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 6" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 7" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 8" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 9" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 10" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 11" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 12" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 13" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 14" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 15" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 16" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 17" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 18" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 19" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-
-      <a-entity  class="target" mindar-image-target="targetIndex: 20" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 21" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 22" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 23" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 24" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 25" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 26" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 27" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 28" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
-      <a-entity  class="target" mindar-image-target="targetIndex: 29" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 20" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 21" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 22" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 23" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 24" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 25" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 26" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 27" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 28" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
+      <a-entity  class="target" mindar-image-target="targetIndex: 29" geometry="primitive: box" material="opacity: 0; transparent: true" visible="false"  ></a-entity>
 
 
     </a-scene>

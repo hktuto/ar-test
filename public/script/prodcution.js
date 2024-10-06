@@ -9,6 +9,7 @@ function parseFloatToFixed(number, precision) {
 let scanObj;
 let refreshInterval;
 let lastMatrix;
+let dismissTimeout;
 AFRAME.registerComponent('grallop', {
     schema: {default: ''},
     init() {
@@ -213,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
     targets.forEach( target => {
         target.addEventListener("targetFound", event => {
             console.log("targetFound")
-            if(showingCat) return;
             showingCat = true;
             const style = document.createElement('style');
             style.innerHTML = `
@@ -223,21 +223,17 @@ document.addEventListener('DOMContentLoaded', () => {
             `
             style.id = 'mindar-ui-scanning-style';
             document.head.appendChild(style);
-            if(scanObj) {
-                // clearInterval(refreshInterval);
-                setTimeout(() => {
-                    displayTarget.object3D.matrix =  event.target.object3D.matrix;  
-                }, 100)
-            }else{
-                scanObj = event.target;
-                setTimeout(() => {
-                    displayTarget.object3D.matrix =  event.target.object3D.matrix;  
-                }, 100)
-            }
+            scanObj = event.target;
+            setTimeout(() => {
+                console.log('set displayTarget position')
+                displayTarget.object3D.matrix =  event.target.object3D.matrix;  
+            }, 100)
             if(refreshInterval){
                 clearInterval(refreshInterval);
             }
-
+            if(dismissTimeout){
+                clearTimeout(dismissTimeout);
+            }
             refreshInterval = setInterval(() => {
                 // store last matrix
                 // compare with current matrix, if too much change, then reset
@@ -248,9 +244,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                     const differentAmount = diff.reduce((a, b) => a + b, 0);
                     console.log(differentAmount)
-                    if(differentAmount > 0.01) {
-                        lastMatrix = currentMatrix;
-                        return;
+                    if(differentAmount > 10000) {
+                        console.log('reset', currentMatrix.elements)
+                    }
+                    if(differentAmount > 500) {
+                        displayTarget.object3D.matrix =  scanObj.object3D.matrix;  
                     }
                 }
                 lastMatrix = currentMatrix;
@@ -284,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("targetLost")
             scanObj = null;
             clearInterval(refreshInterval);
-            setTimeout(() => {
+            dismissTimeout = setTimeout(() => {
                         // remove mindar-ui-scanning-style
                 const style = document.getElementById('mindar-ui-scanning-style');
                 style.remove();
@@ -295,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                 showingCat = false;
                 clearInterval(refreshInterval);
-            },3000)
+            },1800000)
             // console.log("target Lost");
             // displayTarget.object3D.matrix = new AFRAME.THREE.Matrix4().set(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0);
         });
